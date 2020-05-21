@@ -3,7 +3,7 @@ Project 3 - Part 1b / 5
 Video:  Chapter 2 Part 5
 User-Defined Types
 
-Create a branch named Part1
+Create a branch named Part1b
 
 Purpose: The entire purpose of this 5-part project is to get you writing C++ code that compiles and to 
 reinforce the syntax habits that C++ requires.  
