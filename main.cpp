@@ -53,61 +53,60 @@ Thing: Car Wash
  */
 
 /*
-Thing 1)
+Thing 1) Coding Language
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of data types
+    2) number of function/return types
+    3) number of operators
+    4) number of methods of punctuation
+    5) speed of compiler - bits/sec
 3 things it can do:
-    1)
-    2)
-    3)
+    1) create functions and run functions from libraries
+    2) create data structures to store info
+    3) compile to machine code
  */
 
 /*
-Thing 2)
+Thing 2) Recording Studio
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of channels on console
+    2) number of compressors
+    3) number of time-based effects units
+    4) number of monitoring options
+    5) size of live room - square feet
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Record music
+    2) Mix music
+    3) Host concerts
  */
 
 /*
-Thing 3)
+Thing 3) Electrric Guitar
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of strings
+    2) number of frets
+    3) number of pick ups
+    4) number of pick up positions
+    5) number of knobs
 3 things it can do:
-    1)
-    2)
-    3)
+    1) amplify sound from string vibrations
+    2) produce a warm tone
+    3) produce a bright tone 
  */
 
 /*
-Thing 4)
+Thing 4) Refrigerator/Freezer
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of shelves
+    2) number of drawers
+    3) temperature level value - celsius
+    4) size of ice-machine - volume
+    5) size of entire-unit - volume
 3 things it can do:
-    1)
-    2)
-    3)
+    1) chill food
+    2) freeze food
+    3) separate food
  */
-
 
 
 /*
