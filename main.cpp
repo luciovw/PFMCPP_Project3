@@ -113,17 +113,17 @@ Thing 4) Refrigerator/Freezer
  */
 
 /*
-Thing 10)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+Thing 10) MPC Live Sampler
+5 properties: 
+    1) Midi Pads
+    2) Menu/Transport Buttons
+    3) Touch Screen
+    4) Audio I/O
+    5) Audio applications
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Record audio
+    2) Slice sampled audio
+    3) Effect audio
  */
 
 /*
