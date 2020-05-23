@@ -93,7 +93,7 @@ Thing 2) Recording Studio
  */
 
 /*
-Thing 3) Electrric Guitar
+Thing 3) Electric Guitar
 5 properties:
     1) number of strings
     2) number of frets
@@ -121,73 +121,73 @@ Thing 4) Refrigerator/Freezer
  */
 
 /*
-Thing 5)
+Thing 5) Elektron Analog Rytm
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Midi Pads
+    2) Menu/Transport Buttons
+    3) Screen
+    4) Audio I/O
+    5) Audio applications
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Sequence sounds
+    2) Synthesize analog waveforms
+    3) Effect audio
  */
 
 /*
-Thing 6)
+Thing 6) DSI Tempest
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Midi Pads
+    2) Menu/Transport Buttons
+    3) Screen
+    4) Audio I/O
+    5) Audio applications
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Convert Midi data to analog voltage
+    2) Oscilator FM
+    3) Sample digital files
  */
 
 /*
-Thing 7)
+Thing 7) Op-1
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Midi Pads
+    2) Menu/Transport Buttons
+    3) Screen
+    4) Audio I/O
+    5) Audio applications
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Polyphonyic synthesis
+    2) Receive FM Radio signals
+    3) Trigger samples
  */
 
 /*
-Thing 8)
+Thing 8) Akai MPC 60
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Midi Pads
+    2) Menu/Transport Buttons
+    3) Touch Screen
+    4) Audio I/O
+    5) Audio applications
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Record 12 bit audio
+    2) Quantize midi data
+    3) Add swing to midi data
  */
 
 /*
-Thing 9)
+Thing 9) Elektron Model: Cycles
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Midi Pads
+    2) Menu/Transport Buttons
+    3) Touch Screen
+    4) Audio I/O
+    5) Audio applications
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Digital FM synthesis
+    2) 64 step midi sequencer
+    3) Sequencer Midi FX
  */
 
 /*
@@ -195,7 +195,7 @@ Thing 10) MPC Live Sampler
 5 properties: 
     1) Midi Pads
     2) Menu/Transport Buttons
-    3) Touch Screen
+    3) Screen
     4) Audio I/O
     5) Audio applications
 3 things it can do:
