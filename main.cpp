@@ -137,11 +137,11 @@ Thing 5) struct MidiPads
 /*
 Thing 6) struct TransportButtons
 5 properties:
-    1) record button
-    2) play button
-    3) stop button
-    4) fast forward button
-    5) rewind button
+    1) button size
+    2) button hardness
+    3) button pressure resitance
+    4) button press message type
+    5) button response time
 3 things it can do:
     1) start session audio
     2) pause session audio
@@ -179,15 +179,15 @@ Thing 8) struct AudioIO
 /*
 Thing 9) struct AudioApplication
 5 properties:
-    1) compressor
-    2) sampler
-    3) reverb
-    4) digital synthesizer
-    5) pitch shifter
+    1) ratio
+    2) threshold
+    3) decay time
+    4) pre-delay
+    5) transpose
 3 things it can do:
     1) control dynamic range
-    2) trigger samples of audio
-    3) emulate physical spaces
+    2) emulate physical spaces
+    3) transpose audio by semitones
  */
 
 /*
