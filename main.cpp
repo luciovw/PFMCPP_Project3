@@ -121,73 +121,73 @@ Thing 4) Refrigerator/Freezer
  */
 
 /*
-Thing 5) Elektron Analog Rytm
+Thing 5) struct MidiPads
 5 properties:
-    1) Midi Pads
-    2) Menu/Transport Buttons
-    3) Screen
-    4) Audio I/O
-    5) Audio applications
+    1) velocity sensitive
+    2) hardness of rubber
+    3) size of pad
+    4) number of pads
+    5) pads' midi value
 3 things it can do:
-    1) Sequence sounds
-    2) Synthesize analog waveforms
-    3) Effect audio
+    1) trigger sampler
+    2) send note data
+    3) send velocity data
  */
 
 /*
-Thing 6) DSI Tempest
+Thing 6) struct TransportButtons
 5 properties:
-    1) Midi Pads
-    2) Menu/Transport Buttons
-    3) Screen
-    4) Audio I/O
-    5) Audio applications
+    1) record button
+    2) play button
+    3) stop button
+    4) fast forward button
+    5) rewind button
 3 things it can do:
-    1) Convert Midi data to analog voltage
-    2) Oscilator FM
-    3) Sample digital files
+    1) start session audio
+    2) pause session audio
+    3) reset play head position to Bar 0
  */
 
 /*
-Thing 7) Op-1
+Thing 7) struct Screen
 5 properties:
-    1) Midi Pads
-    2) Menu/Transport Buttons
-    3) Screen
-    4) Audio I/O
-    5) Audio applications
+    1) brightness
+    2) hue
+    3) size
+    4) Boarder perimeter width
+    5) touch sensitivity
 3 things it can do:
-    1) Polyphonyic synthesis
-    2) Receive FM Radio signals
-    3) Trigger samples
+    1) Scroll 
+    2) click via touch
+    3) control fx via touchbars sending midi cc's
  */
 
 /*
-Thing 8) Akai MPC 60
+Thing 8) struct AudioIO
 5 properties:
-    1) Midi Pads
-    2) Menu/Transport Buttons
-    3) Touch Screen
-    4) Audio I/O
-    5) Audio applications
+    1) analog to digital conversion
+    2) digital to analog conversion
+    3) sample rate
+    4) buffer size
+    5) audio file type
 3 things it can do:
-    1) Record 12 bit audio
-    2) Quantize midi data
-    3) Add swing to midi data
+    1) convert analog signal to digital signals
+    2) convert digital signal to analog signals
+    3) write converted analog signals to storage
  */
 
 /*
-Thing 9) Elektron Model: Cycles
+Thing 9) struct AudioApplication
 5 properties:
-    1) Midi Pads
-    2) Menu/Transport Buttons
-    3) Touch Screen
-    4) Audio I/O
-    5) Audio applications
+    1) compressor
+    2) sampler
+    3) reverb
+    4) digital synthesizer
+    5) pitch shifter
 3 things it can do:
-    1) Digital FM synthesis
-    2) 64 step midi sequencer
-    3) Sequencer Midi FX
+    1) control dynamic range
+    2) trigger samples of audio
+    3) emulate physical spaces
  */
 
 /*
@@ -199,9 +199,9 @@ Thing 10) MPC Live Sampler
     4) Audio I/O
     5) Audio applications
 3 things it can do:
-    1) Record audio
-    2) Slice sampled audio
-    3) Effect audio
+    1) slice sampled audio
+    2) make songs
+    3) effect audio
  */
 
 /*
