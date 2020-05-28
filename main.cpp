@@ -126,7 +126,7 @@ struct CodingLanguage
     int numPunctuationTypes = 5;
     //speed of compiler - bits/sec
     int compilerBit_Sec = 1000000;
-//3 things it can do:
+    //3 things it can do:
     // 1)create functions and run functions from libraries
     int createIntFunction(int variable1, int variable2);
     // 2) create data structures to store info
@@ -137,228 +137,228 @@ struct CodingLanguage
 //2
 struct RecordingStudio
 {
-//     number of channels on console
-int numConsoleChannels = 64;
-//     number of compressors
-int numCompressors = 12;
-//     number of time-based effects units
-int numTimeFXUnits = 8;
-//     number of monitoring options
-int numMonitorPairs = 4;
+    //number of channels on console
+    int numConsoleChannels = 64;
+    //number of compressors
+    int numCompressors = 12;
+    //number of time-based effects units
+    int numTimeFXUnits = 8;
+    //number of monitoring options
+    int numMonitorPairs = 4;
 
-struct LiveRoom
-{
-//size in sqr feet
-double roomSize = 2010.4;
-//height in feet
-double ceilingHeight = 14.5;
-//reverb time seconds
-double RT60 = 1.001;
-//number of microphones
-int numMicrophones = 22;
-//mic stand height inches
-double micStandHeight = 40.5;
+    struct LiveRoom
+    {
+        //size in sqr feet
+        double roomSize = 2010.4;
+        //height in feet
+        double ceilingHeight = 14.5;
+        //reverb time seconds
+        double RT60 = 1.001;
+        //number of microphones
+        int numMicrophones = 22;
+        //mic stand height inches
+        double micStandHeight = 40.5;
 
-void adjustMicStandHeight(double initHeight, double newHeight);
-void moveBaffle(double initPosition, double newPosition);
-void micDrumSet(int numDrums, int numMicrophones);
-};
+        void adjustMicStandHeight(double initHeight, double newHeight);
+        void moveBaffle(double initPosition, double newPosition);
+        void micDrumSet(int numDrums, int numMicrophones);
+    };
 
-// 3 things it can do:
-//     1) Record music
-void recordMusic(float music, int storageType);
-//     2) Mix music
-void mixMusic (float channel1Data, float channel2Data, float channel3Data);
-//     3) Host concerts
-void hostConcert (int numPerformers, int numGuests);
+    // 3 things it can do:
+    //1) Record music
+    void recordMusic(float music, int storageType);
+    //2) Mix music
+    void mixMusic (float channel1Data, float channel2Data, float channel3Data);
+    //3) Host concerts
+    void hostConcert (int numPerformers, int numGuests);
 
-LiveRoom roomA;
-LiveRoom roomB;
+    LiveRoom roomA;
+    LiveRoom roomB;
 };
 
 
 //3
 struct ElectricGuitar
 {
-//     number of strings
-int numStrings = 6;
-//     number of frets
-int numFrets = 20;
-//     number of pick ups
-int numPickUps = 2;
-//     number of pick up positions
-int numPickupPositions = 5;
-//     number of knobs
-int numKnobs = 3;
-// 3 things it can do:
-//     1) amplify sound from string vibrations
-float amplifyStringVibration(int stringNum, float stringFreq);
-//     2) produce a warm tone
-float warmTone (float noteInfo);
-//     3) produce a bright tone 
-float brightTone (float noteInfo);
+    //number of strings
+    int numStrings = 6;
+    //number of frets
+    int numFrets = 20;
+    //number of pick ups
+    int numPickUps = 2;
+    //number of pick up positions
+    int numPickupPositions = 5;
+    //number of knobs
+    int numKnobs = 3;
+    // 3 things it can do:
+    //1) amplify sound from string vibrations
+    float amplifyStringVibration(int stringNum, float stringFreq);
+    //2) produce a warm tone
+    float warmTone (float noteInfo);
+    //3) produce a bright tone 
+    float brightTone (float noteInfo);
 };
 //4
 struct RefrigeratorFreezer
 {
-//     number of shelves
-int numShelves = 4;
-//     number of drawers
-int numDrawers = 3;
-//     temperature level value - celsius
-double tempVal = 7;
-//     size of ice-machine - volume
-double sizeIceMachine = 40;
-//     size of entire-unit - volume
-double sizeEntireUnit = 700;
-// 3 things it can do:
-//     1) chill food
-void chillFood(double tempVal);
-//     2) freeze food
-void freezeFood(double tempVal);
-//     3) separate food
-int separateFood(int initDrawerNum, int newDrawerNum);
+    //number of shelves
+    int numShelves = 4;
+    //number of drawers
+    int numDrawers = 3;
+    //temperature level value - celsius
+    double tempVal = 7;
+    //size of ice-machine - volume
+    double sizeIceMachine = 40;
+    //size of entire-unit - volume
+    double sizeEntireUnit = 700;
+    // 3 things it can do:
+    //1) chill food
+    void chillFood(double tempVal);
+    //2) freeze food
+    void freezeFood(double tempVal);
+    //3) separate food
+    int separateFood(int initDrawerNum, int newDrawerNum);
 };
 //5
 struct MidiPads
 {
-//     velocity sensitive
-int padVelocity = 127;
-//     hardness of rubber
-double padHardness  = 8.3;
-//     size of pad
-double sizeOfPad = 3.3;
-//     number of pads
-int numPads = 16;
-//     pads' midi value
-std::string midiCC = "Midi CC #10";
-// 3 things it can do:
-//     1) trigger sampler
-void triggerSample(int triggerInput, int channelDestination);
-//     2) send note data
-void sendNoteData(int noteData, int channelDestination);
-//     3) send velocity data
-void sendVelocityData(int velocityData, int channelDestination);
+    //velocity sensitive
+    int padVelocity = 127;
+    //hardness of rubber
+    double padHardness  = 8.3;
+    //size of pad
+    double sizeOfPad = 3.3;
+    //number of pads
+    int numPads = 16;
+    //pads' midi value
+    std::string midiCC = "Midi CC #10";
+    // 3 things it can do:
+    //1) trigger sampler
+    void triggerSample(int triggerInput, int channelDestination);
+    //2) send note data
+    void sendNoteData(int noteData, int channelDestination);
+    //3) send velocity data
+    void sendVelocityData(int velocityData, int channelDestination);
 };
 //6
 struct TransportButtons
 {
-//     button size
-double buttonSize = 1.1;
-//     button hardness
-double buttonHardness = 30.8;
-//     button pressure resitance
-double buttonPressureResitance = 100.2;
-//     button press message type
-int buttonMessageType = 0;
-//     button response time
-double buttonResponseTime = 0.01;
-// 3 things it can do:
-//     1) start session audio
-void startSessionAudio(int session, double playStart);
-//     2) pause session audio
-void pauseSessionAudio(int session);
-//     3) reset play head position to Bar 0
-void resetPlayhead(int session, double playheadPosition);
+    //button size
+    double buttonSize = 1.1;
+    //button hardness
+    double buttonHardness = 30.8;
+    //button pressure resitance
+    double buttonPressureResitance = 100.2;
+    //button press message type
+    int buttonMessageType = 0;
+    //button response time
+    double buttonResponseTime = 0.01;
+    // 3 things it can do:
+    //1) start session audio
+    void startSessionAudio(int session, double playStart);
+    //2) pause session audio
+    void pauseSessionAudio(int session);
+    //3) reset play head position to Bar 0
+    void resetPlayhead(int session, double playheadPosition);
 };
 //7
 struct Screen
 {
-//     brightness
-double screenBrightness = 8.5;
-//     hue
-std::string hue = "Blue";
-//     size
-double screenSize = 35.2;
-//     Boarder perimeter width
-double boarderPerimeterWidth = 2.4;
-//     touch sensitivity
-double touchSensitivity = 2.3;
-// 3 things it can do:
-//     1) Scroll 
-void screenScroll(double screenPosition, double scrollSpeed);
-//     2) click via touch
-bool touchClick (bool pressed);
-//     3) control fx via touchbars sending midi cc's
-void controlCC(std::string midiCCNum, int ccData);
+    //brightness
+    double screenBrightness = 8.5;
+    //hue
+    std::string hue = "Blue";
+    //size
+    double screenSize = 35.2;
+    //Boarder perimeter width
+    double boarderPerimeterWidth = 2.4;
+    //touch sensitivity
+    double touchSensitivity = 2.3;
+    // 3 things it can do:
+    //1) Scroll 
+    void screenScroll(double screenPosition, double scrollSpeed);
+    //2) click via touch
+    bool touchClick (bool pressed);
+    //3) control fx via touchbars sending midi cc's
+    void controlCC(std::string midiCCNum, int ccData);
 };
 //8
 struct AudioIO
 {
-//     analog to digital conversion
-float adc = -0.45f;
-//     digital to analog conversion
-float dac = 1.2f;
-//     sample rate
-int sampleRate= 44100;
-//     buffer size
-int bufferSize = 128;
-//     audio file type
-std::string fileType = ".wav";
-// 3 things it can do:
-//     1) convert analog signal to digital signals
-void ADC (float analogSignal, float digitalSignal);
-//     2) convert digital signal to analog signals
-void Dac (float digitalSignal, float analogSignal);
-//     3) write converted analog signals to storage
-float storeSignal(float signalToStore, std::string fileType);
+    //analog to digital conversion
+    float adc = -0.45f;
+    //digital to analog conversion
+    float dac = 1.2f;
+    //sample rate
+    int sampleRate= 44100;
+    //buffer size
+    int bufferSize = 128;
+    //audio file type
+    std::string fileType = ".wav";
+    // 3 things it can do:
+    //1) convert analog signal to digital signals
+    void ADC (float analogSignal, float digitalSignal);
+    //2) convert digital signal to analog signals
+    void Dac (float digitalSignal, float analogSignal);
+    //3) write converted analog signals to storage
+    float storeSignal(float signalToStore, std::string fileType);
 };
 //9
 struct AudioApplication
 {
-//     ratio
-float ratio = 5.5f;
-//     threshold
-float threshold = -19.5f;
-//     decay time
-float decayTime = 3.4f;
-//     pre-delay
-float preDelay = 10.2f;
-//     transpose
-int transpose = -7;
-// 3 things it can do:
-//     1) control dynamic range
-float compress(float input, float ratio, float threshold);
-//     2) emulate physical spaces
-float reverberate(float input, float roomSize);
-//     3) transpose audio by semitones
-float semitoneTranspose(float input, int transposeVal);
+    //ratio
+    float ratio = 5.5f;
+    //threshold
+    float threshold = -19.5f;
+    //decay time
+    float decayTime = 3.4f;
+    //pre-delay
+    float preDelay = 10.2f;
+    //transpose
+    int transpose = -7;
+    // 3 things it can do:
+    //1) control dynamic range
+    float compress(float input, float ratio, float threshold);
+    //2) emulate physical spaces
+    float reverberate(float input, float roomSize);
+    //3) transpose audio by semitones
+    float semitoneTranspose(float input, int transposeVal);
 };
 //10
 struct MPCLive
 {
-//     Midi Pads
-MidiPads midiPads16;
-//     Menu/Transport Buttons
-TransportButtons transports;
-//     Screen
-Screen smallScreen;
-//     Audio I/O
-AudioIO coreAudio;
-//     Audio aplication
-AudioApplication compVerb;
-//     Sampler Audio application
-struct Sampler
-{
-std::string fileType = ".wav";
-int sliceNum = 1;
-int sliceLength = 3;
-float sliceData[3]{0.32f, -0.23f, 0.56f};
-int maxNumSlices = 128;
+    //Midi Pads
+    MidiPads midiPads16;
+    //Menu/Transport Buttons
+    TransportButtons transports;
+    //Screen
+    Screen smallScreen;
+    //Audio I/O
+    AudioIO coreAudio;
+    //Audio aplication
+    AudioApplication compVerb;
+    //Sampler Audio application
+    struct Sampler
+    {
+        std::string fileType = ".wav";
+        int sliceNum = 1;
+        int sliceLength = 3;
+        float sliceData[3]{0.32f, -0.23f, 0.56f};
+        int maxNumSlices = 128;
 
-float playSlice(int sliceNum, float outData);
-int switchSlice(int currentSlice, int targetSlice);
-float varispeedTransposeSlice(float inputData, int semitoneTranspose);
+        float playSlice(int sliceNum, float outData);
+        int switchSlice(int currentSlice, int targetSlice);
+        float varispeedTransposeSlice(float inputData, int semitoneTranspose);
 
-};
+    };
 
-// 3 things it can do:
-//     1) slice sampled audio
-int createNewSlice(float slicePosition, float sliceData);
-//     2) make songs
-void makeSong(AudioApplication audioProgram, Sampler lilsampler, bool hasTaste);
-//     3) effect audio
-float effectAudio(float inputSignal);
+    // 3 things it can do:
+    //1) slice sampled audio
+    int createNewSlice(float slicePosition, float sliceData);
+    //2) make songs
+    void makeSong(AudioApplication audioProgram, Sampler lilsampler, bool hasTaste);
+    //3) effect audio
+    float effectAudio(float inputSignal);
 };
 
 /*
