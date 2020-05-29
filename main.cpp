@@ -14,10 +14,54 @@ Create a branch named Part2
     you should be able to deduce the return type of those functions based on their usage in Person::run()
     You'll need to insert the Person struct from the video in the space below.
  */
+#include <iostream>
+using namespace std;
 
+struct Person
+{
+int age;
+int height;
+float hairLength;
+float GPA;
+unsigned int SATScore;
+int distanceTraveled;
 
+    struct Foot
+    {
+        int numSteps = 0;
+        void stepForward();
+        int stepSize();
+    };
 
+void run(int howFast, bool startWithLeftFoot, Foot leftFoot, Foot rightFoot);
 
+};
+
+void Person::Foot::stepForward()
+{
+++numSteps;
+}
+
+int Person::Foot::stepSize()
+{
+    return 0;
+}
+
+void Person::run(int howFast, bool startWithLeftFoot, Foot leftFoot, Foot rightFoot)
+{
+    if(startWithLeftFoot == true)
+    {
+        leftFoot.stepForward();
+        rightFoot.stepForward();
+    } 
+    else
+    {
+        rightFoot.stepForward();
+        leftFoot.stepForward();
+    }
+    howFast = 10;
+    distanceTraveled += (rightFoot.stepSize() + leftFoot.stepSize()) * (rightFoot.numSteps + leftFoot.numSteps);
+}
 
  /*
  2) provide implementations for the member functions you declared in your 10 user-defined types from the previous video outside of your UDT definitions.
@@ -42,14 +86,35 @@ struct CodingLanguage
     int numPunctuationTypes = 5;
     //speed of compiler - bits/sec
     int compilerBit_Sec = 1000000;
+    //initialize
+    float compileDCode = 0.0f;
     //3 things it can do:
     // 1)create functions and run functions from libraries
     int createIntFunction(int variable1, int variable2);
     // 2) create data structures to store info
-    int createArray(float inputData, int arraySize);
+    int createArray(int inputData, int index);
     // 3) compile to machine code
     void compileCode(float code);
 };
+
+int CodingLanguage::createIntFunction(int variable1, int variable2)
+{
+//int multiply = variable1 * variable2;
+int add = variable1 + variable2;
+return add;
+}
+
+int CodingLanguage::createArray(int inputData, int index)
+{
+int newArray [] = {inputData}; 
+return newArray[index];
+}
+
+void CodingLanguage::compileCode(float code)
+{
+int numOfThingsACompilerDoes = 1000000;
+compileDCode = code * numOfThingsACompilerDoes;
+}
 //2
 struct RecordingStudio
 {
@@ -61,6 +126,10 @@ struct RecordingStudio
     int numTimeFXUnits = 8;
     //number of monitoring options
     int numMonitorPairs = 4;
+    //init recorded music - mixed song - and size of concert
+    float recordedMusic = 0;
+    float mixedSong = 0;
+    int sizeOfConcert = 0;
 
     struct LiveRoom
     {
@@ -72,17 +141,21 @@ struct RecordingStudio
         double RT60 = 1.001;
         //number of microphones
         int numMicrophones = 22;
+        // init num drums
+        int numDrums = 4;
         //mic stand height inches
         double micStandHeight = 40.5;
+        //init bafflePosition
+        double bafflePosition = 100;
 
-        void adjustMicStandHeight(double initHeight, double newHeight);
-        void moveBaffle(double initPosition, double newPosition);
-        void micDrumSet(int numDrums, int numMicrophones);
+        void adjustMicStandHeight(double initHeight, double amountAdjusted);
+        void moveBaffle(double angle, double newPosition);
+        void micDrumSet(int newNumDrums, int newNumMicrophones);
     };
 
     // 3 things it can do:
     //1) Record music
-    void recordMusic(float music, int storageType);
+    void recordMusic(float music);
     //2) Mix music
     void mixMusic (float channel1Data, float channel2Data, float channel3Data);
     //3) Host concerts
@@ -92,6 +165,33 @@ struct RecordingStudio
     LiveRoom roomB;
 };
 
+void RecordingStudio::LiveRoom::adjustMicStandHeight(double initHeight, double amountAdjusted)
+{
+    initHeight = micStandHeight;
+    micStandHeight = initHeight+amountAdjusted;
+
+}
+void RecordingStudio::LiveRoom::moveBaffle(double angle, double newPosition)
+{
+    bafflePosition = angle + newPosition;
+}
+void RecordingStudio::LiveRoom::micDrumSet(int newNumDrums, int newNumMicrophones)
+{
+    numDrums = newNumDrums;
+    numMicrophones = newNumMicrophones;
+}
+void RecordingStudio::recordMusic(float music)
+{
+    recordedMusic = music;
+}
+void RecordingStudio::mixMusic(float channel1Data, float channel2Data, float channel3Data)
+{
+    mixedSong = (channel1Data*0.33f) + (channel2Data*0.33f) + (channel3Data*0.33f);
+}
+void RecordingStudio::hostConcert(int numPerformers, int numGuests)
+{
+    sizeOfConcert = numPerformers + numGuests;
+}
 
 //3
 struct ElectricGuitar
@@ -106,6 +206,7 @@ struct ElectricGuitar
     int numPickupPositions = 5;
     //number of knobs
     int numKnobs = 3;
+
     // 3 things it can do:
     //1) amplify sound from string vibrations
     float amplifyStringVibration(int stringNum, float stringFreq);
@@ -114,6 +215,21 @@ struct ElectricGuitar
     //3) produce a bright tone 
     float brightTone (float noteInfo);
 };
+float ElectricGuitar::amplifyStringVibration(int stringNum, float stringFreq)
+{
+    return stringNum*stringFreq;
+}
+float ElectricGuitar::warmTone (float noteInfo)
+{
+    float highshelf = -3.0f;
+    return noteInfo * highshelf;
+}
+float ElectricGuitar::brightTone (float noteInfo)
+{
+    float highshelf = 3.0f;
+    return noteInfo * highshelf;
+}
+
 //4
 struct RefrigeratorFreezer
 {
@@ -127,14 +243,30 @@ struct RefrigeratorFreezer
     double sizeIceMachine = 40;
     //size of entire-unit - volume
     double sizeEntireUnit = 700;
+    //init foodLocation
+    int foodLocation = 1;
     // 3 things it can do:
     //1) chill food
-    void chillFood(double tempVal);
+    void chillFood(double newTempVal);
     //2) freeze food
-    void freezeFood(double tempVal);
+    void freezeFood(double newTempVal);
     //3) separate food
-    int separateFood(int initDrawerNum, int newDrawerNum);
+    void separateFood(int newDrawerNum);
 };
+
+void RefrigeratorFreezer::chillFood(double newTempVal)
+{
+    tempVal = newTempVal;
+}
+void RefrigeratorFreezer::freezeFood(double newTempVal)
+{
+    tempVal = newTempVal;
+}
+void RefrigeratorFreezer::separateFood(int newDrawerNum)
+{
+    foodLocation = newDrawerNum;
+}
+
 //5
 struct MidiPads
 {
@@ -148,14 +280,39 @@ struct MidiPads
     int numPads = 16;
     //pads' midi value
     std::string midiCC = "Midi CC #10";
+
+    //init sound controls
+    int triggerChannel = 0;
+    int currentNote = 0;
+    int currentVelocity = 0;
+
     // 3 things it can do:
     //1) trigger sampler
-    void triggerSample(int triggerInput, int channelDestination);
+    void triggerSample(bool triggerInput, int channelDestination);
     //2) send note data
     void sendNoteData(int noteData, int channelDestination);
     //3) send velocity data
     void sendVelocityData(int velocityData, int channelDestination);
 };
+
+void MidiPads::triggerSample(bool triggerInput, int channelDestination)
+{
+    if(triggerInput==true)
+    {
+        triggerChannel= channelDestination;
+    }
+}
+void MidiPads::sendNoteData(int noteData, int channelDestination)
+{
+    currentNote = noteData;
+    triggerChannel = channelDestination;
+}
+void MidiPads::sendVelocityData(int velocityData, int channelDestination)
+{
+    currentVelocity = velocityData;
+    triggerChannel = channelDestination;
+}
+
 //6
 struct TransportButtons
 {
@@ -169,6 +326,12 @@ struct TransportButtons
     int buttonMessageType = 0;
     //button response time
     double buttonResponseTime = 0.01;
+    // init transports
+    int sessionNumber = 0;
+    double sessionPlayhead = 0;
+    bool paused = true;
+
+
     // 3 things it can do:
     //1) start session audio
     void startSessionAudio(int session, double playStart);
@@ -177,6 +340,28 @@ struct TransportButtons
     //3) reset play head position to Bar 0
     void resetPlayhead(int session, double playheadPosition);
 };
+void TransportButtons::startSessionAudio(int session, double playStart)
+{
+    if (paused==true)
+    {
+        sessionNumber = session;
+        sessionPlayhead = playStart;
+    }
+}
+void TransportButtons::pauseSessionAudio(int session)
+{
+    if (paused==false)
+    {
+        sessionNumber = session;
+        paused = true;
+    }
+}
+void TransportButtons::resetPlayhead(int session, double playheadPosition = 0)
+{
+sessionNumber = session;
+sessionPlayhead = playheadPosition;
+}
+
 //7
 struct Screen
 {
@@ -190,14 +375,41 @@ struct Screen
     double boarderPerimeterWidth = 2.4;
     //touch sensitivity
     double touchSensitivity = 2.3;
+
+    //init screen
+    double currentPosition = 0;
+    double currentSpeed = 0;
+    bool clicking = false;
+
     // 3 things it can do:
     //1) Scroll 
     void screenScroll(double screenPosition, double scrollSpeed);
     //2) click via touch
-    bool touchClick (bool pressed);
+    void touchClick (bool pressed);
     //3) control fx via touchbars sending midi cc's
-    void controlCC(std::string midiCCNum, int ccData);
+    std::string controlCC(std::string midiCCNum);
 };
+
+void Screen::screenScroll(double screenPosition, double scrollSpeed)
+{
+    currentPosition = screenPosition;
+    currentSpeed = scrollSpeed;
+}
+void Screen::touchClick (bool pressed)
+{
+    if (pressed == true)
+    {
+        clicking = true;
+    } else 
+    {
+        clicking = false;
+    }
+}
+std::string Screen::controlCC(std::string midiCCNum)
+{
+    return midiCCNum;
+}
+
 //8
 struct AudioIO
 {
@@ -211,27 +423,43 @@ struct AudioIO
     int bufferSize = 128;
     //audio file type
     std::string fileType = ".wav";
+    //init stored file
+    float storedFile = 0;
     // 3 things it can do:
     //1) convert analog signal to digital signals
     void ADC (float analogSignal, float digitalSignal);
     //2) convert digital signal to analog signals
-    void Dac (float digitalSignal, float analogSignal);
+    void DAC (float digitalSignal, float analogSignal);
     //3) write converted analog signals to storage
-    float storeSignal(float signalToStore, std::string fileType);
+    void storeSignal(float signalToStore);
 };
+
+void AudioIO::ADC(float analogSignal, float digitalSignal)
+{
+    adc = analogSignal*digitalSignal;
+}
+void AudioIO::DAC(float digitalSignal, float analogSignal)
+{
+    dac = digitalSignal*analogSignal;
+}
+void AudioIO::storeSignal(float signalToStore)
+{
+    storedFile = signalToStore;
+}
+
 //9
 struct AudioApplication
 {
     //ratio
-    float ratio = 5.5f;
+    float initRatio = 5.5f;
     //threshold
-    float threshold = -19.5f;
+    float initThreshold = -19.5f;
     //decay time
-    float decayTime = 3.4f;
+    float initDecayTime = 3.4f;
     //pre-delay
-    float preDelay = 10.2f;
+    float initPreDelay = 10.2f;
     //transpose
-    int transpose = -7;
+    int initTranspose = -7;
     // 3 things it can do:
     //1) control dynamic range
     float compress(float input, float ratio, float threshold);
@@ -240,6 +468,26 @@ struct AudioApplication
     //3) transpose audio by semitones
     float semitoneTranspose(float input, int transposeVal);
 };
+float AudioApplication::compress(float input, float ratio, float threshold)
+{
+    if (input>threshold)
+    {
+        return input * (0.1f*ratio);
+    } else
+    {
+        return input;
+    }
+}
+float AudioApplication::reverberate(float input, float roomSize)
+{
+    float delayTimeMS = 10.0f * roomSize;
+    return input * delayTimeMS;
+}
+float AudioApplication::semitoneTranspose(float input, int transposeVal)
+{
+    return input*transposeVal;
+}
+
 //10
 struct MPCLive
 {
@@ -257,165 +505,56 @@ struct MPCLive
     struct Sampler
     {
         std::string fileType = ".wav";
-        int sliceNum = 1;
-        int sliceLength = 3;
+        int currentSliceNum = 1;
+        int currentSliceLength = 3;
         float sliceData[3]{0.32f, -0.23f, 0.56f};
         int maxNumSlices = 128;
 
         float playSlice(int sliceNum, float outData);
-        int switchSlice(int currentSlice, int targetSlice);
+        int switchSlice(int targetSlice);
         float varispeedTransposeSlice(float inputData, int semitoneTranspose);
 
     };
-
     // 3 things it can do:
     //1) slice sampled audio
-    int createNewSlice(float slicePosition, float sliceData);
+    float createNewSlice(float slicePosition, float sliceData);
     //2) make songs
     void makeSong(AudioApplication audioProgram, Sampler lilsampler, bool hasTaste);
     //3) effect audio
     float effectAudio(float inputSignal);
 };
 
-/*
-Thing 1) Coding Language
-5 properties:
-    1) number of data types
-    2) number of function/return types
-    3) number of operators
-    4) number of methods of punctuation
-    5) speed of compiler - bits/sec
-3 things it can do:
-    1) create functions and run functions from libraries
-    2) create data structures to store info
-    3) compile to machine code
- */
-
-/*
-Thing 2) Recording Studio
-5 properties:
-    1) number of channels on console
-    2) number of compressors
-    3) number of time-based effects units
-    4) number of monitoring options
-    5) size of live room - square feet
-3 things it can do:
-    1) Record music
-    2) Mix music
-    3) Host concerts
- */
-
-/*
-Thing 3) Electric Guitar
-5 properties:
-    1) number of strings
-    2) number of frets
-    3) number of pick ups
-    4) number of pick up positions
-    5) number of knobs
-3 things it can do:
-    1) amplify sound from string vibrations
-    2) produce a warm tone
-    3) produce a bright tone 
- */
-
-/*
-Thing 4) Refrigerator/Freezer
-5 properties:
-    1) number of shelves
-    2) number of drawers
-    3) temperature level value - celsius
-    4) size of ice-machine - volume
-    5) size of entire-unit - volume
-3 things it can do:
-    1) chill food
-    2) freeze food
-    3) separate food
- */
-
-/*
-Thing 5) struct MidiPads
-5 properties:
-    1) velocity sensitive
-    2) hardness of rubber
-    3) size of pad
-    4) number of pads
-    5) pads' midi value
-3 things it can do:
-    1) trigger sampler
-    2) send note data
-    3) send velocity data
- */
-
-/*
-Thing 6) struct TransportButtons
-5 properties:
-    1) button size
-    2) button hardness
-    3) button pressure resitance
-    4) button press message type
-    5) button response time
-3 things it can do:
-    1) start session audio
-    2) pause session audio
-    3) reset play head position to Bar 0
- */
-
-/*
-Thing 7) struct Screen
-5 properties:
-    1) brightness
-    2) hue
-    3) size
-    4) Boarder perimeter width
-    5) touch sensitivity
-3 things it can do:
-    1) Scroll 
-    2) click via touch
-    3) control fx via touchbars sending midi cc's
- */
-
-/*
-Thing 8) struct AudioIO
-5 properties:
-    1) analog to digital conversion
-    2) digital to analog conversion
-    3) sample rate
-    4) buffer size
-    5) audio file type
-3 things it can do:
-    1) convert analog signal to digital signals
-    2) convert digital signal to analog signals
-    3) write converted analog signals to storage
- */
-
-/*
-Thing 9) struct AudioApplication
-5 properties:
-    1) ratio
-    2) threshold
-    3) decay time
-    4) pre-delay
-    5) transpose
-3 things it can do:
-    1) control dynamic range
-    2) emulate physical spaces
-    3) transpose audio by semitones
- */
-
-/*
-Thing 10) MPC Live Sampler
-5 properties: 
-    1) Midi Pads
-    2) Menu/Transport Buttons
-    3) Screen
-    4) Audio I/O
-    5) Audio applications
-3 things it can do:
-    1) slice sampled audio
-    2) make songs
-    3) effect audio
- */
+float MPCLive::Sampler::playSlice(int sliceNum, float outData)
+{
+    currentSliceNum = sliceNum;
+    return outData;
+}
+int MPCLive::Sampler::switchSlice(int targetSlice)
+{
+    currentSliceNum = targetSlice;
+    return targetSlice;
+}
+float MPCLive::Sampler::varispeedTransposeSlice(float inputData, int semitoneTranspose)
+{
+    return inputData*semitoneTranspose;
+}
+float MPCLive::createNewSlice(float slicePosition, float sliceData)
+{
+    return slicePosition + sliceData;
+}
+void MPCLive::makeSong(AudioApplication audioProgram, Sampler lilsampler, bool hasTaste)
+{
+    if (hasTaste == true)
+    {
+        audioProgram.compress(.05f, 6.2f, -20.0f);
+        lilsampler.varispeedTransposeSlice(0.4f, 4);
+    }
+}
+float MPCLive::effectAudio(float inputSignal)
+{
+float effect = 0.2f;
+return inputSignal*effect;
+}
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
