@@ -19,27 +19,27 @@ using namespace std;
 
 struct Person
 {
-int age;
-int height;
-float hairLength;
-float GPA;
-unsigned int SATScore;
-int distanceTraveled;
+    int age;
+    int height;
+    float hairLength;
+    float GPA;
+    unsigned int SATScore;
+    int distanceTraveled;
 
-    struct Foot
-    {
-        int numSteps = 0;
-        void stepForward();
-        int stepSize();
-    };
+        struct Foot
+        {
+            int numSteps = 0;
+            void stepForward();
+            int stepSize();
+        };
 
-void run(int howFast, bool startWithLeftFoot, Foot leftFoot, Foot rightFoot);
+    void run(int howFast, bool startWithLeftFoot, Foot leftFoot, Foot rightFoot);
 
 };
 
 void Person::Foot::stepForward()
 {
-++numSteps;
+    ++numSteps;
 }
 
 int Person::Foot::stepSize()
@@ -99,21 +99,21 @@ struct CodingLanguage
 
 int CodingLanguage::createIntFunction(int variable1, int variable2)
 {
-//int multiply = variable1 * variable2;
-int add = variable1 + variable2;
-return add;
+    //int multiply = variable1 * variable2;
+    int add = variable1 + variable2;
+    return add;
 }
 
 int CodingLanguage::createArray(int inputData, int index)
 {
-int newArray [] = {inputData}; 
-return newArray[index];
+    int newArray [] = {inputData}; 
+    return newArray[index];
 }
 
 void CodingLanguage::compileCode(float code)
 {
-int numOfThingsACompilerDoes = 1000000;
-compileDCode = code * numOfThingsACompilerDoes;
+    int numOfThingsACompilerDoes = 1000000;
+    compileDCode = code * numOfThingsACompilerDoes;
 }
 //2
 struct RecordingStudio
@@ -186,7 +186,9 @@ void RecordingStudio::recordMusic(float music)
 }
 void RecordingStudio::mixMusic(float channel1Data, float channel2Data, float channel3Data)
 {
-    mixedSong = (channel1Data*0.33f) + (channel2Data*0.33f) + (channel3Data*0.33f);
+    mixedSong = (channel1Data * 0.33f) + 
+                (channel2Data * 0.33f) + 
+                (channel3Data * 0.33f);
 }
 void RecordingStudio::hostConcert(int numPerformers, int numGuests)
 {
@@ -298,9 +300,9 @@ struct MidiPads
 void MidiPads::triggerSample(bool triggerInput, int channelDestination)
 {
     if(triggerInput==true)
-    {
-        triggerChannel= channelDestination;
-    }
+        {
+            triggerChannel= channelDestination;
+        }
 }
 void MidiPads::sendNoteData(int noteData, int channelDestination)
 {
@@ -358,8 +360,8 @@ void TransportButtons::pauseSessionAudio(int session)
 }
 void TransportButtons::resetPlayhead(int session, double playheadPosition = 0)
 {
-sessionNumber = session;
-sessionPlayhead = playheadPosition;
+    sessionNumber = session;
+    sessionPlayhead = playheadPosition;
 }
 
 //7
@@ -397,13 +399,7 @@ void Screen::screenScroll(double screenPosition, double scrollSpeed)
 }
 void Screen::touchClick (bool pressed)
 {
-    if (pressed == true)
-    {
-        clicking = true;
-    } else 
-    {
-        clicking = false;
-    }
+    clicking = pressed;
 }
 std::string Screen::controlCC(std::string midiCCNum)
 {
@@ -471,12 +467,12 @@ struct AudioApplication
 float AudioApplication::compress(float input, float ratio, float threshold)
 {
     if (input>threshold)
-    {
-        return input * (0.1f*ratio);
-    } else
-    {
-        return input;
-    }
+        {
+            return input * (0.1f * ratio);
+        } else
+            {
+                return input;
+            }
 }
 float AudioApplication::reverberate(float input, float roomSize)
 {
@@ -485,7 +481,7 @@ float AudioApplication::reverberate(float input, float roomSize)
 }
 float AudioApplication::semitoneTranspose(float input, int transposeVal)
 {
-    return input*transposeVal;
+    return input * transposeVal;
 }
 
 //10
@@ -552,8 +548,8 @@ void MPCLive::makeSong(AudioApplication audioProgram, Sampler lilsampler, bool h
 }
 float MPCLive::effectAudio(float inputSignal)
 {
-float effect = 0.2f;
-return inputSignal*effect;
+    float effect = 0.2f;
+    return inputSignal * effect;
 }
 
 /*
