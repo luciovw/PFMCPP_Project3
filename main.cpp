@@ -26,7 +26,7 @@ struct Person
     unsigned int SATScore;
     int distanceTraveled;
 
-        struct Foot
+    struct Foot
         {
             int numSteps = 0;
             void stepForward();
@@ -300,10 +300,11 @@ struct MidiPads
 void MidiPads::triggerSample(bool triggerInput, int channelDestination)
 {
     if(triggerInput==true)
-        {
-            triggerChannel= channelDestination;
-        }
+    {
+        triggerChannel= channelDestination;
+    }
 }
+
 void MidiPads::sendNoteData(int noteData, int channelDestination)
 {
     currentNote = noteData;
@@ -467,12 +468,13 @@ struct AudioApplication
 float AudioApplication::compress(float input, float ratio, float threshold)
 {
     if (input>threshold)
-        {
-            return input * (0.1f * ratio);
-        } else
-            {
-                return input;
-            }
+    {
+        return input * (0.1f*ratio);
+    } 
+    else
+    {
+        return input;
+    }
 }
 float AudioApplication::reverberate(float input, float roomSize)
 {
