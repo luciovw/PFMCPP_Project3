@@ -73,14 +73,14 @@ struct CodingLanguage
 
     int createIntFunction(int variable1, int variable2);
 
-    int createArray(int inputData, int index);
+    float createFloatFunction(float variable1, float variable2);
 
     void compileCode(float code);
 };
 
 CodingLanguage::CodingLanguage()
 {
-    CodingLanguage::numOperatorTypes = 5;
+    numOperatorTypes = 5;
 }
 
 int CodingLanguage::createIntFunction(int variable1, int variable2)
@@ -90,11 +90,11 @@ int CodingLanguage::createIntFunction(int variable1, int variable2)
     return add;
 }
 
-int CodingLanguage::createArray(int inputData, int index)
+float CodingLanguage::createFloatFunction(float variable1, float variable2)
 {
-    int newArray [] = {inputData}; 
-    std::cout << "New array of integers created" << std::endl;
-    return newArray[index];
+    float subtract = variable1 - variable2;
+    std::cout << "Result: " << subtract << "\n";
+    return subtract;
 }
 
 void CodingLanguage::compileCode(float code)
@@ -141,13 +141,13 @@ struct RecordingStudio
 
 RecordingStudio::RecordingStudio(int numOutBoardGear)
 {
-    RecordingStudio::numCompressors = numOutBoardGear/2;
-    RecordingStudio::numTimeFXUnits = numOutBoardGear/2;
+    numCompressors = numOutBoardGear/2;
+    numTimeFXUnits = numOutBoardGear/2;
 }
 
 RecordingStudio::LiveRoom::LiveRoom(double studioRoomSize)
 {
-    LiveRoom::roomSize = studioRoomSize;
+    roomSize = studioRoomSize;
 }
 
 void RecordingStudio::LiveRoom::adjustMicStandHeight(double initHeight, double amountAdjusted)
@@ -201,7 +201,7 @@ struct ElectricGuitar
 
 ElectricGuitar::ElectricGuitar(int numBrokenStrings)
 {
-    ElectricGuitar::numStrings-=numBrokenStrings;
+    numStrings-=numBrokenStrings;
 }
 
 float ElectricGuitar::amplifyStringVibration(int stringNum, float stringFreq)
@@ -280,7 +280,7 @@ struct MidiPads
 
 MidiPads::MidiPads(int numBrokenPads)
 {
-    MidiPads::numPads -= numBrokenPads;
+    numPads -= numBrokenPads;
 }
 
 void MidiPads::triggerSample(bool triggerInput, int channelDestination)
@@ -413,8 +413,8 @@ struct AudioIO
 
 AudioIO::AudioIO(int setSamplerate, int setBufferSize)
 {
-    AudioIO::sampleRate = setSamplerate;
-    AudioIO::bufferSize = setBufferSize;
+    sampleRate = setSamplerate;
+    bufferSize = setBufferSize;
 }
 
 void AudioIO::ADC(float analogSignal, float digitalSignal)
@@ -579,7 +579,7 @@ int main()
     Example::main();
 
     CodingLanguage LL;
-    LL.createArray(10, 30);
+    LL.createFloatFunction(10.5f, 30.7f);
 
     RecordingStudio daStu(100);
     daStu.roomB.adjustMicStandHeight(2.2, 4.4);
