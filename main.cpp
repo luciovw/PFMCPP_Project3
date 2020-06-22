@@ -59,9 +59,6 @@ int main()
 
 //insert Example::main() into main() of user's repo.
 
-
-
-
 // 1
 struct CodingLanguage
 {
@@ -72,13 +69,19 @@ struct CodingLanguage
     int compilerBit_Sec = 1000000;
 
     float compileDCode = 0.0f;
+    CodingLanguage();
 
     int createIntFunction(int variable1, int variable2);
 
-    int createArray(int inputData, int index);
+    float createFloatFunction(float variable1, float variable2);
 
     void compileCode(float code);
 };
+
+CodingLanguage::CodingLanguage()
+{
+    numOperatorTypes = 5;
+}
 
 int CodingLanguage::createIntFunction(int variable1, int variable2)
 {
@@ -87,10 +90,11 @@ int CodingLanguage::createIntFunction(int variable1, int variable2)
     return add;
 }
 
-int CodingLanguage::createArray(int inputData, int index)
+float CodingLanguage::createFloatFunction(float variable1, float variable2)
 {
-    int newArray [] = {inputData}; 
-    return newArray[index];
+    float subtract = variable1 - variable2;
+    std::cout << "Result: " << subtract << "\n";
+    return subtract;
 }
 
 void CodingLanguage::compileCode(float code)
@@ -98,6 +102,7 @@ void CodingLanguage::compileCode(float code)
     int numOfThingsACompilerDoes = 1000000;
     compileDCode = code * numOfThingsACompilerDoes;
 }
+
 //2
 struct RecordingStudio
 {
@@ -108,6 +113,7 @@ struct RecordingStudio
     float recordedMusic = 0;
     float mixedSong = 0;
     int sizeOfConcert = 0;
+    RecordingStudio(int numOutBoardGear);
 
     struct LiveRoom
     {
@@ -118,6 +124,7 @@ struct RecordingStudio
         int numDrums = 4;
         double micStandHeight = 40.5;
         double bafflePosition = 100;
+        LiveRoom(double studioRoomSize);
 
         void adjustMicStandHeight(double initHeight, double amountAdjusted);
         void moveBaffle(double angle, double newPosition);
@@ -128,16 +135,29 @@ struct RecordingStudio
     void mixMusic (float channel1Data, float channel2Data, float channel3Data);
     void hostConcert (int numPerformers, int numGuests);
 
-    LiveRoom roomA;
-    LiveRoom roomB;
+    LiveRoom roomA{6.1};
+    LiveRoom roomB{4.1};
 };
+
+RecordingStudio::RecordingStudio(int numOutBoardGear)
+{
+    numCompressors = numOutBoardGear/2;
+    numTimeFXUnits = numOutBoardGear/2;
+}
+
+RecordingStudio::LiveRoom::LiveRoom(double studioRoomSize)
+{
+    roomSize = studioRoomSize;
+}
 
 void RecordingStudio::LiveRoom::adjustMicStandHeight(double initHeight, double amountAdjusted)
 {
     initHeight = micStandHeight;
     micStandHeight = initHeight+amountAdjusted;
+    std::cout << "Mic Stand Height Adjusted" << std::endl;
 
 }
+
 void RecordingStudio::LiveRoom::moveBaffle(double angle, double newPosition)
 {
     bafflePosition = angle + newPosition;
@@ -147,10 +167,12 @@ void RecordingStudio::LiveRoom::micDrumSet(int newNumDrums, int newNumMicrophone
     numDrums = newNumDrums;
     numMicrophones = newNumMicrophones;
 }
+
 void RecordingStudio::recordMusic(float music)
 {
     recordedMusic = music;
 }
+
 void RecordingStudio::mixMusic(float channel1Data, float channel2Data, float channel3Data)
 {
     mixedSong = (channel1Data * 0.33f) + 
@@ -170,11 +192,18 @@ struct ElectricGuitar
     int numPickUps = 2;
     int numPickupPositions = 5;
     int numKnobs = 3;
+    ElectricGuitar(int numBrokenStrings);
 
     float amplifyStringVibration(int stringNum, float stringFreq);
     float warmTone (float noteInfo);
     float brightTone (float noteInfo);
 };
+
+ElectricGuitar::ElectricGuitar(int numBrokenStrings)
+{
+    numStrings-=numBrokenStrings;
+}
+
 float ElectricGuitar::amplifyStringVibration(int stringNum, float stringFreq)
 {
     return stringNum*stringFreq;
@@ -182,8 +211,10 @@ float ElectricGuitar::amplifyStringVibration(int stringNum, float stringFreq)
 float ElectricGuitar::warmTone (float noteInfo)
 {
     float highshelf = -3.0f;
+    std::cout << "Tone is now warmer!" << std::endl;
     return noteInfo * highshelf;
 }
+
 float ElectricGuitar::brightTone (float noteInfo)
 {
     float highshelf = 3.0f;
@@ -199,19 +230,30 @@ struct RefrigeratorFreezer
     double sizeIceMachine = 40;
     double sizeEntireUnit = 700;
     int foodLocation = 1;
+    RefrigeratorFreezer();
+
     void chillFood(double newTempVal);
     void freezeFood(double newTempVal);
     void separateFood(int newDrawerNum);
 };
 
+RefrigeratorFreezer::RefrigeratorFreezer()
+{
+
+}
+
 void RefrigeratorFreezer::chillFood(double newTempVal)
 {
     tempVal = newTempVal;
+    std::cout << "Fridge Temperature changed!" << std::endl;
 }
+
 void RefrigeratorFreezer::freezeFood(double newTempVal)
 {
     tempVal = newTempVal;
+    std::cout << "Freezer Temperature changed!" << std::endl;
 }
+
 void RefrigeratorFreezer::separateFood(int newDrawerNum)
 {
     foodLocation = newDrawerNum;
@@ -229,11 +271,17 @@ struct MidiPads
     int triggerChannel = 0;
     int currentNote = 0;
     int currentVelocity = 0;
+    MidiPads(int numBrokenPads);
 
     void triggerSample(bool triggerInput, int channelDestination);
     void sendNoteData(int noteData, int channelDestination);
     void sendVelocityData(int velocityData, int channelDestination);
 };
+
+MidiPads::MidiPads(int numBrokenPads)
+{
+    numPads -= numBrokenPads;
+}
 
 void MidiPads::triggerSample(bool triggerInput, int channelDestination)
 {
@@ -247,7 +295,9 @@ void MidiPads::sendNoteData(int noteData, int channelDestination)
 {
     currentNote = noteData;
     triggerChannel = channelDestination;
+    std::cout << "Note Data Sent!" << std::endl;
 }
+
 void MidiPads::sendVelocityData(int velocityData, int channelDestination)
 {
     currentVelocity = velocityData;
@@ -266,10 +316,18 @@ struct TransportButtons
     double sessionPlayhead = 0;
     bool paused = true;
 
+    TransportButtons();
+
     void startSessionAudio(int session, double playStart);
     void pauseSessionAudio(int session);
     void resetPlayhead(int session, double playheadPosition);
 };
+
+TransportButtons::TransportButtons()
+{
+
+}
+
 void TransportButtons::startSessionAudio(int session, double playStart)
 {
     if (paused==true)
@@ -278,6 +336,7 @@ void TransportButtons::startSessionAudio(int session, double playStart)
         sessionPlayhead = playStart;
     }
 }
+
 void TransportButtons::pauseSessionAudio(int session)
 {
     if (paused==false)
@@ -285,7 +344,9 @@ void TransportButtons::pauseSessionAudio(int session)
         sessionNumber = session;
         paused = true;
     }
+    std::cout << "Session Paused" << std::endl;
 }
+
 void TransportButtons::resetPlayhead(int session, double playheadPosition = 0)
 {
     sessionNumber = session;
@@ -304,22 +365,32 @@ struct Screen
     double currentSpeed = 0;
     bool clicking = false;
 
+    Screen(double setDefaultScreenSize);
+
     void screenScroll(double screenPosition, double scrollSpeed);
     void touchClick (bool pressed);
     std::string controlCC(std::string midiCCNum);
 };
+
+Screen::Screen(double setDefaultScreenSize)
+{
+    screenSize = setDefaultScreenSize;
+}
 
 void Screen::screenScroll(double screenPosition, double scrollSpeed)
 {
     currentPosition = screenPosition;
     currentSpeed = scrollSpeed;
 }
+
 void Screen::touchClick (bool pressed)
 {
     clicking = pressed;
+    std::cout << "Clicked!"<< std::endl;
 }
 std::string Screen::controlCC(std::string midiCCNum)
 {
+    std::cout << "Midi CC = " << midiCCNum << std::endl;
     return midiCCNum;
 }
 
@@ -333,22 +404,34 @@ struct AudioIO
     std::string fileType = ".wav";
     float storedFile = 0;
 
+    AudioIO(int setSamplerate, int setBufferSize);
+
     void ADC (float analogSignal, float digitalSignal);
     void DAC (float digitalSignal, float analogSignal);
     void storeSignal(float signalToStore);
 };
 
+AudioIO::AudioIO(int setSamplerate, int setBufferSize)
+{
+    sampleRate = setSamplerate;
+    bufferSize = setBufferSize;
+}
+
 void AudioIO::ADC(float analogSignal, float digitalSignal)
 {
     adc = analogSignal*digitalSignal;
+    std::cout << "Analog signal converted to digital" << std::endl;
 }
+
 void AudioIO::DAC(float digitalSignal, float analogSignal)
 {
     dac = digitalSignal*analogSignal;
 }
+
 void AudioIO::storeSignal(float signalToStore)
 {
     storedFile = signalToStore;
+    std::cout << "File stored" << std::endl;
 }
 
 //9
@@ -359,15 +442,23 @@ struct AudioApplication
     float initDecayTime = 3.4f;
     float initPreDelay = 10.2f;
     int initTranspose = -7;
+    AudioApplication();
 
     float compress(float input, float ratio, float threshold);
     float reverberate(float input, float roomSize);
     float semitoneTranspose(float input, int transposeVal);
 };
+
+AudioApplication::AudioApplication()
+{
+
+}
+
 float AudioApplication::compress(float input, float ratio, float threshold)
 {
     if (input>threshold)
     {
+        std::cout << "Signal Compressed" << std::endl;
         return input * (0.1f*ratio);
     } 
     else
@@ -375,24 +466,28 @@ float AudioApplication::compress(float input, float ratio, float threshold)
         return input;
     }
 }
+
 float AudioApplication::reverberate(float input, float roomSize)
 {
     float delayTimeMS = 10.0f * roomSize;
     return input * delayTimeMS;
 }
+
 float AudioApplication::semitoneTranspose(float input, int transposeVal)
 {
+    std::cout << "Signal Transposed" << std::endl;
     return input * transposeVal;
 }
 
 //10
 struct MPCLive
 {
-    MidiPads midiPads16;
+    MidiPads midiPads16 {16};
     TransportButtons transports;
-    Screen smallScreen;
-    AudioIO coreAudio;
+    Screen smallScreen {48.4};
+    AudioIO coreAudio{44100, 16};
     AudioApplication compVerb;
+    MPCLive();
 
     struct Sampler
     {
@@ -401,6 +496,8 @@ struct MPCLive
         int currentSliceLength = 3;
         float sliceData[3]{0.32f, -0.23f, 0.56f};
         int maxNumSlices = 128;
+
+        Sampler();
 
         float playSlice(int sliceNum, float outData);
         int switchSlice(int targetSlice);
@@ -413,24 +510,40 @@ struct MPCLive
     float effectAudio(float inputSignal);
 };
 
+MPCLive::Sampler::Sampler()
+{
+
+}
+
+MPCLive::MPCLive()
+{
+
+}
+
 float MPCLive::Sampler::playSlice(int sliceNum, float outData)
 {
     currentSliceNum = sliceNum;
+    std::cout << "Slice played" << std::endl;
     return outData;
 }
+
 int MPCLive::Sampler::switchSlice(int targetSlice)
 {
     currentSliceNum = targetSlice;
     return targetSlice;
 }
+
 float MPCLive::Sampler::varispeedTransposeSlice(float inputData, int semitoneTranspose)
 {
     return inputData*semitoneTranspose;
 }
+
 float MPCLive::createNewSlice(float slicePosition, float sliceData)
 {
+    std::cout << "New slice created" << std::endl;
     return slicePosition + sliceData;
 }
+
 void MPCLive::makeSong(AudioApplication audioProgram, Sampler lilsampler, bool hasTaste)
 {
     if (hasTaste == true)
@@ -439,6 +552,7 @@ void MPCLive::makeSong(AudioApplication audioProgram, Sampler lilsampler, bool h
         lilsampler.varispeedTransposeSlice(0.4f, 4);
     }
 }
+
 float MPCLive::effectAudio(float inputSignal)
 {
     float effect = 0.2f;
@@ -463,5 +577,41 @@ float MPCLive::effectAudio(float inputSignal)
 int main()
 {
     Example::main();
+
+    CodingLanguage LL;
+    LL.createFloatFunction(10.5f, 30.7f);
+
+    RecordingStudio daStu(100);
+    daStu.roomB.adjustMicStandHeight(2.2, 4.4);
+
+    ElectricGuitar strat(0);
+    strat.warmTone(220);
+
+    RefrigeratorFreezer daFridge;
+    daFridge.chillFood(40.1);
+
+    std::cout << "New Fridge Temperature: " << daFridge.tempVal << " degrees (F)" << std::endl;
+
+    MidiPads twoBrokenPads(2);
+    std::cout << twoBrokenPads.numPads << " Pads are working!" << std::endl;
+
+    TransportButtons transports;
+    transports.pauseSessionAudio(1);
+    
+    Screen verySmallScreen(1);
+    verySmallScreen.touchClick(true);
+
+    AudioIO converterHQ (96000, 32);
+    converterHQ.ADC(0.32783546f, 0.389234579f);
+
+    AudioApplication compressor1;
+    std:: cout << compressor1.compress(3.3f, 5.0f, -22.2f) << " = new signal value!" << std::endl;
+
+    MPCLive MPMP;
+
+    MPMP.createNewSlice(4.4f, 3.3f);
+
+    MPMP.coreAudio.storeSignal(5.5f);
+
     std::cout << "good to go!" << std::endl;
 }
