@@ -201,12 +201,12 @@ struct ElectricGuitar
 
 ElectricGuitar::ElectricGuitar(int numBrokenStrings)
 {
-    numStrings-=numBrokenStrings;
+    numStrings -= numBrokenStrings;
 }
 
 float ElectricGuitar::amplifyStringVibration(int stringNum, float stringFreq)
 {
-    return stringNum*stringFreq;
+    return stringNum * stringFreq;
 }
 float ElectricGuitar::warmTone (float noteInfo)
 {
@@ -287,7 +287,7 @@ void MidiPads::triggerSample(bool triggerInput, int channelDestination)
 {
     if(triggerInput==true)
     {
-        triggerChannel= channelDestination;
+        triggerChannel = channelDestination;
     }
 }
 
@@ -330,7 +330,7 @@ TransportButtons::TransportButtons()
 
 void TransportButtons::startSessionAudio(int session, double playStart)
 {
-    if (paused==true)
+    if (paused == true)
     {
         sessionNumber = session;
         sessionPlayhead = playStart;
@@ -339,7 +339,7 @@ void TransportButtons::startSessionAudio(int session, double playStart)
 
 void TransportButtons::pauseSessionAudio(int session)
 {
-    if (paused==false)
+    if (paused == false)
     {
         sessionNumber = session;
         paused = true;
