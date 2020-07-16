@@ -184,7 +184,9 @@ ElectricGuitar::ElectricGuitar(int numBrokenStrings)
 
 float ElectricGuitar::amplifyStringVibration(int stringNum, float stringFreq)
 {
-    return stringNum*stringFreq;
+    float amplifiedNote = stringNum * stringFreq;
+    std::cout << "Note to be amplified: " << amplifiedNote << std::endl;
+    return amplifiedNote;
 }
 float ElectricGuitar::warmTone (float noteInfo)
 {
@@ -223,7 +225,7 @@ RefrigeratorFreezer::RefrigeratorFreezer()
 void RefrigeratorFreezer::chillFood(double newTempVal)
 {
     tempVal = newTempVal;
-    std::cout << "Fridge Temperature changed!" << std::endl;
+    std::cout << "Fridge Temperature changed to: " << newTempVal << std::endl;
 }
 
 void RefrigeratorFreezer::freezeFood(double newTempVal)
@@ -398,7 +400,7 @@ AudioIO::AudioIO(int setSamplerate, int setBufferSize)
 void AudioIO::ADC(float analogSignal, float digitalSignal)
 {
     adc = analogSignal*digitalSignal;
-    std::cout << "Analog signal converted to digital" << std::endl;
+    std::cout << "Analog signal converted to digital, new signal: " << adc << std::endl;
 }
 
 void AudioIO::DAC(float digitalSignal, float analogSignal)
@@ -463,7 +465,7 @@ struct MPCLive
     MidiPads midiPads16 {16};
     TransportButtons transports;
     Screen smallScreen {48.4};
-    AudioIO coreAudio{44100, 16};
+    AudioIO coreAudio{44100, 16}; 
     AudioApplication compVerb;
     MPCLive();
 
@@ -483,6 +485,8 @@ struct MPCLive
 
     };
 
+    Sampler MPMPSampler;
+
     float createNewSlice(float slicePosition, float sliceData);
     void makeSong(AudioApplication audioProgram, Sampler lilsampler, bool hasTaste);
     float effectAudio(float inputSignal);
@@ -501,7 +505,7 @@ MPCLive::MPCLive()
 float MPCLive::Sampler::playSlice(int sliceNum, float outData)
 {
     currentSliceNum = sliceNum;
-    std::cout << "Slice played" << std::endl;
+    std::cout << "Slice #" << sliceNum << " played. Slice data: " << outData << std::endl;
     return outData;
 }
 
@@ -564,11 +568,10 @@ int main()
 
     ElectricGuitar strat(0);
     strat.warmTone(220);
+    strat.amplifyStringVibration(4, 220);
 
     RefrigeratorFreezer daFridge;
-    daFridge.chillFood(40.1);
-
-    std::cout << "New Fridge Temperature: " << daFridge.tempVal << " degrees (F)" << std::endl;
+    daFridge.chillFood(40.12);
 
     MidiPads twoBrokenPads(2);
     std::cout << twoBrokenPads.numPads << " Pads are working!" << std::endl;
@@ -590,6 +593,8 @@ int main()
     MPMP.createNewSlice(4.4f, 3.3f);
 
     MPMP.coreAudio.storeSignal(5.5f);
+
+    MPMP.MPMPSampler.playSlice(1, 3.9f);
 
     std::cout << "good to go!" << std::endl;
 }
