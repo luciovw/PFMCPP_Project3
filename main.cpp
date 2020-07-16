@@ -566,7 +566,7 @@ int main()
     strat.warmTone(220);
 
     RefrigeratorFreezer daFridge;
-    daFridge.chillFood(40.1);
+    daFridge.chillFood(40.12);
 
     std::cout << "New Fridge Temperature: " << daFridge.tempVal << " degrees (F)" << std::endl;
 
