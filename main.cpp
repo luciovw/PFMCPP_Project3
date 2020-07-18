@@ -113,7 +113,7 @@ void CodingLanguage::addTwo(float initialValue, int timesToAddTwo)
 {
     std::cout << "Starting value: " << initialValue << ". ";
     
-    for (int i = 0; i < timesToAddTwo; i++)
+    for (int i = 0; i < timesToAddTwo; ++i)
     {
         initialValue += 2;
     }
@@ -253,7 +253,8 @@ void ElectricGuitar::tuneString(int currentNoteInfo, int targetNote)
                     ++currentNoteInfo;
                 }
             std::cout << "Now you're in tune." << std::endl;
-        } else if (currentNoteInfo > targetNote)
+        } 
+            else if (currentNoteInfo > targetNote)
             {
                 std::cout << "You were sharp! ";
                 while (currentNoteInfo > targetNote)
@@ -261,7 +262,8 @@ void ElectricGuitar::tuneString(int currentNoteInfo, int targetNote)
                         currentNoteInfo -= 1;
                     }
                 std::cout << "Now you're in tune." << std::endl;
-            } else if (currentNoteInfo == targetNote)
+            } 
+                else if (currentNoteInfo == targetNote)
                 {
                     std::cout << "You're already in tune!!" << std::endl;
                 }
@@ -464,7 +466,8 @@ void Screen::rapidClick (int timeToRapidClick)
         {
             clicking = true;
             std::cout << "Clicking! ";
-        } else if (i % 2 != 0)
+        } 
+            else if (i % 2 != 0)
             {
                 clicking = false;
                 std::cout << "Not clicking! ";
@@ -562,9 +565,9 @@ float AudioApplication::semitoneTranspose(float input, int transposeVal)
 void AudioApplication::runAudio (float signal, int bufferSize)
 {
     for (int i = 0; i < bufferSize; ++i)
-        {
-            compress(signal, 3, -10);
-        }
+    {
+        compress(signal, 3, -10);
+    }
     std::cout << "Compressed " << bufferSize << " samples of " << signal << std::endl;
 }
 
