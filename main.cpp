@@ -63,10 +63,6 @@ int main()
 
 //call Example::main() in main()
 
-
-
-
-
 // 1
 struct CodingLanguage
 {
@@ -84,6 +80,8 @@ struct CodingLanguage
     float createFloatFunction(float variable1, float variable2);
 
     void compileCode(float code);
+
+    void addTwo(float initialValue, int timesToAddTwo);
 };
 
 CodingLanguage::CodingLanguage()
@@ -109,6 +107,18 @@ void CodingLanguage::compileCode(float code)
 {
     int numOfThingsACompilerDoes = 1000000;
     compileDCode = code * numOfThingsACompilerDoes;
+}
+
+void CodingLanguage::addTwo(float initialValue, int timesToAddTwo)
+{
+    std::cout << "Starting value: " << initialValue << ". ";
+    
+    for (int i = 0; i < timesToAddTwo; i++)
+    {
+        initialValue += 2;
+    }
+
+    std::cout << "2 added " << timesToAddTwo << " times. New Value = " << initialValue << std::endl;
 }
 
 //2
@@ -205,6 +215,8 @@ struct ElectricGuitar
     float amplifyStringVibration(int stringNum, float stringFreq);
     float warmTone (float noteInfo);
     float brightTone (float noteInfo);
+
+    void tuneString(int currentNoteInfo, int targetNote);
 };
 
 ElectricGuitar::ElectricGuitar(int numBrokenStrings)
@@ -229,6 +241,30 @@ float ElectricGuitar::brightTone (float noteInfo)
 {
     float highshelf = 3.0f;
     return noteInfo * highshelf;
+}
+
+void ElectricGuitar::tuneString(int currentNoteInfo, int targetNote)
+{
+    if (currentNoteInfo < targetNote)
+        {
+            std::cout << "You were flat! ";
+            while (currentNoteInfo < targetNote)
+                {
+                    ++currentNoteInfo;
+                }
+            std::cout << "Now you're in tune." << std::endl;
+        } else if (currentNoteInfo > targetNote)
+            {
+                std::cout << "You were sharp! ";
+                while (currentNoteInfo > targetNote)
+                    {
+                        currentNoteInfo -= 1;
+                    }
+                std::cout << "Now you're in tune." << std::endl;
+            } else if (currentNoteInfo == targetNote)
+                {
+                    std::cout << "You're already in tune!!" << std::endl;
+                }
 }
 
 //4
@@ -281,11 +317,14 @@ struct MidiPads
     int triggerChannel = 0;
     int currentNote = 0;
     int currentVelocity = 0;
+    bool padOn = false;
     MidiPads(int numBrokenPads);
 
     void triggerSample(bool triggerInput, int channelDestination);
     void sendNoteData(int noteData, int channelDestination);
     void sendVelocityData(int velocityData, int channelDestination);
+
+    void padIsOn(float timeForPadToBeOn);
 };
 
 MidiPads::MidiPads(int numBrokenPads)
@@ -312,6 +351,17 @@ void MidiPads::sendVelocityData(int velocityData, int channelDestination)
 {
     currentVelocity = velocityData;
     triggerChannel = channelDestination;
+}
+
+void MidiPads::padIsOn(float timeForPadToBeOn)
+{
+    for (int i = 0; i < timeForPadToBeOn; ++i)
+    {
+        padOn = true;
+    }
+    padOn = false;
+    std::cout << "Pad was on for " << timeForPadToBeOn << " samples." << std::endl;
+
 }
 
 //6
@@ -380,6 +430,8 @@ struct Screen
     void screenScroll(double screenPosition, double scrollSpeed);
     void touchClick (bool pressed);
     std::string controlCC(std::string midiCCNum);
+
+    void rapidClick (int timeToRapidClick);
 };
 
 Screen::Screen(double setDefaultScreenSize)
@@ -402,6 +454,23 @@ std::string Screen::controlCC(std::string midiCCNum)
 {
     std::cout << "Midi CC = " << midiCCNum << std::endl;
     return midiCCNum;
+}
+
+void Screen::rapidClick (int timeToRapidClick)
+{
+    for (int i = 0; i < timeToRapidClick; ++i)
+    {
+        if (i % 2 == 0)
+        {
+            clicking = true;
+            std::cout << "Clicking! ";
+        } else if (i % 2 != 0)
+            {
+                clicking = false;
+                std::cout << "Not clicking! ";
+            }
+    }
+    std::cout << std::endl;
 }
 
 //8
@@ -457,6 +526,7 @@ struct AudioApplication
     float compress(float input, float ratio, float threshold);
     float reverberate(float input, float roomSize);
     float semitoneTranspose(float input, int transposeVal);
+    void runAudio (float signal, int bufferSize);
 };
 
 AudioApplication::AudioApplication()
@@ -487,6 +557,15 @@ float AudioApplication::semitoneTranspose(float input, int transposeVal)
 {
     std::cout << "Signal Transposed" << std::endl;
     return input * transposeVal;
+}
+
+void AudioApplication::runAudio (float signal, int bufferSize)
+{
+    for (int i = 0; i < bufferSize; ++i)
+        {
+            compress(signal, 3, -10);
+        }
+    std::cout << "Compressed " << bufferSize << " samples of " << signal << std::endl;
 }
 
 //10
@@ -625,6 +704,20 @@ int main()
     MPMP.coreAudio.storeSignal(5.5f);
 
     MPMP.MPMPSampler.playSlice(1, 3.9f);
+
+    LL.addTwo(10, 5);
+
+    strat.tuneString(500, 600);
+    strat.tuneString(600, 500);
+    strat.tuneString(600, 600);
+
+    MidiPads playPad(0);
+    playPad.padIsOn(400);
+
+    verySmallScreen.rapidClick(4);
+
+    AudioApplication audioProcessor;
+    audioProcessor.runAudio(10, 4);
 
     std::cout << "good to go!" << std::endl;
 }
