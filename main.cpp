@@ -246,27 +246,27 @@ float ElectricGuitar::brightTone (float noteInfo)
 void ElectricGuitar::tuneString(int currentNoteInfo, int targetNote)
 {
     if (currentNoteInfo < targetNote)
+    {
+        std::cout << "You were flat! ";
+        while (currentNoteInfo < targetNote)
         {
-            std::cout << "You were flat! ";
-            while (currentNoteInfo < targetNote)
-                {
-                    ++currentNoteInfo;
-                }
+            ++currentNoteInfo;
+        }
+        std::cout << "Now you're in tune." << std::endl;
+    } 
+        else if (currentNoteInfo > targetNote)
+        {
+            std::cout << "You were sharp! ";
+            while (currentNoteInfo > targetNote)
+            {
+                currentNoteInfo -= 1;
+            }
             std::cout << "Now you're in tune." << std::endl;
         } 
-            else if (currentNoteInfo > targetNote)
+            else if (currentNoteInfo == targetNote)
             {
-                std::cout << "You were sharp! ";
-                while (currentNoteInfo > targetNote)
-                    {
-                        currentNoteInfo -= 1;
-                    }
-                std::cout << "Now you're in tune." << std::endl;
-            } 
-                else if (currentNoteInfo == targetNote)
-                {
-                    std::cout << "You're already in tune!!" << std::endl;
-                }
+                std::cout << "You're already in tune!!" << std::endl;
+            }
 }
 
 //4
