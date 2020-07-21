@@ -254,19 +254,19 @@ void ElectricGuitar::tuneString(int currentNoteInfo, int targetNote)
         }
         std::cout << "Now you're in tune." << std::endl;
     } 
-        else if (currentNoteInfo > targetNote)
+    else if (currentNoteInfo > targetNote)
+    {
+        std::cout << "You were sharp! ";
+        while (currentNoteInfo > targetNote)
         {
-            std::cout << "You were sharp! ";
-            while (currentNoteInfo > targetNote)
-            {
-                currentNoteInfo -= 1;
-            }
-            std::cout << "Now you're in tune." << std::endl;
-        } 
-            else if (currentNoteInfo == targetNote)
-            {
-                std::cout << "You're already in tune!!" << std::endl;
-            }
+            currentNoteInfo -= 1;
+        }
+        std::cout << "Now you're in tune." << std::endl;
+    } 
+    else if (currentNoteInfo == targetNote)
+    {
+        std::cout << "You're already in tune!!" << std::endl;
+    }
 }
 
 //4
@@ -466,12 +466,12 @@ void Screen::rapidClick (int timeToRapidClick)
         {
             clicking = true;
             std::cout << "Clicking! ";
-        } 
-            else if (i % 2 != 0)
-            {
-                clicking = false;
-                std::cout << "Not clicking! ";
-            }
+        }
+        else if (i % 2 != 0)
+        {
+            clicking = false;
+            std::cout << "Not clicking! ";
+        }
     }
     std::cout << std::endl;
 }
